@@ -215,7 +215,7 @@ async function submitBooking() {
 
         document.getElementById('step3')?.classList.add('done');
         document.getElementById('booking-form').innerHTML = renderSuccessState(booking.id, payload);
-        showToast('Permohonan terkirim (Static Mode)!', 'success');
+        showToast('Permohonan Berhasil Dikirim!', 'success');
         
     } catch (e) {
         showToast('Gagal mengirim data.', 'error');

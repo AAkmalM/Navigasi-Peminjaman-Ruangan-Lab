@@ -23,13 +23,13 @@ function renderTimeline() {
     let html = existing.map(b => {
         const s = getPct(timeToMinutes(b.jamMulai));
         const e = getPct(timeToMinutes(b.jamSelesai));
-        return `<div class="tl-seg booked" style="left:${s}%;width:${Math.max(e - s, 1)}%">${b.jamMulai}</div>`;
+        return `<div class="tl-seg booked" style="left:${s}%;width:${Math.max(e - s, 1)}%">${b.jamMulai}–${b.jamSelesai}</div>`;
     }).join('');
 
     if (ms && me && timeToMinutes(ms) < timeToMinutes(me)) {
         const s = getPct(timeToMinutes(ms)), e = getPct(timeToMinutes(me));
         const isBad = getConflicts(r, d, ms, me).length > 0;
-        html += `<div class="tl-seg ${isBad ? 'new-bad' : 'new-ok'}" style="left:${s}%;width:${Math.max(e - s, 1)}%">${ms}</div>`;
+        html += `<div class="tl-seg ${isBad ? 'new-bad' : 'new-ok'}" style="left:${s}%;width:${Math.max(e - s, 1)}%">${ms}–${me}</div>`;
     }
     if (bar) bar.innerHTML = html;
 }
