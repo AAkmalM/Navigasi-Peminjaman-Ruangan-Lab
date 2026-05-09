@@ -2,42 +2,23 @@
   body {
     margin: 0;
     padding: 0;
-    font-family: sans-serif;
+    overflow: hidden;
+    background: #f4f4f4;
   }
   
-  /* Link navigasi yang diletakkan di atas iframe */
-  .nav-bar {
-    background: #f8f9fa;
-    padding: 12px 20px;
-    text-align: right;
-    border-bottom: 1px solid #ddd;
-  }
-  
-  .nav-link-peminjaman {
-    color: #0D2244;
-    text-decoration: none;
-    font-weight: 700;
-    font-size: 14px;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-  }
-  
-  .nav-link-peminjaman:hover {
-    color: #C8A84B;
+  .container {
+    position: relative;
+    width: 100%;
+    height: 100vh; /* Mengisi seluruh layar */
+    display: flex;
+    flex-direction: column;
   }
 
   .canva-frame-container {
     position: relative;
     width: 100%;
-    height: 0;
-    padding-top: 292.02%; 
+    flex: 1; /* Mengisi sisa ruang */
     overflow: hidden;
-  }
-
-  @media (max-width: 767px) {
-    .canva-frame-container {
-      padding-top: 350%; 
-    }
   }
 
   .canva-embed-item {
@@ -48,18 +29,52 @@
     left: 0;
     border: none;
   }
+
+  /* Overlay Transparan tepat di atas teks "PEMINJAMAN LAB" di dalam Canva */
+  .peminjaman-link-overlay {
+    position: absolute;
+    /* Koordinat ini disesuaikan dengan posisi menu di dalam desain Canva Anda */
+    top: 36px;      /* Jarak dari atas ke bar menu Canva */
+    right: 45px;    /* Jarak dari kanan ke teks Peminjaman Lab */
+    width: 130px;   /* Lebar area klik */
+    height: 30px;   /* Tinggi area klik */
+    z-index: 999;
+    cursor: pointer;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+    /* Styling agar terlihat seperti link saat di-hover (bergaris) */
+    color: transparent;
+    border-bottom: 2px solid transparent;
+    transition: all 0.2s;
+  }
+
+  .peminjaman-link-overlay:hover {
+    border-bottom: 2px solid #0D2244; /* Warna garis bawah menyesuaikan desain */
+  }
+
+  /* Responsive adjustment jika diperlukan */
+  @media (max-width: 768px) {
+    .peminjaman-link-overlay {
+      top: 25px;
+      right: 30px;
+      width: 100px;
+    }
+  }
 </style>
 
-<!-- Link sederhana sesuai permintaan (Melekat dengan kata PEMINJAMAN LAB) -->
-<div class="nav-bar">
-  <a href="https://aakmalm.github.io/Navigasi-Peminjaman-Ruangan-Lab/" class="nav-link-peminjaman">PEMINJAMAN LAB</a>
-</div>
+<div class="container">
+  <div class="canva-frame-container">
+    <!-- Link Overlay Transparan -->
+    <a href="https://aakmalm.github.io/Navigasi-Peminjaman-Ruangan-Lab/" class="peminjaman-link-overlay" title="Kembali ke Peminjaman Lab"></a>
 
-<div class="canva-frame-container">
-  <iframe 
-    class="canva-embed-item"
-    loading="lazy" 
-    src="https://www.canva.com/design/DAHJHEUu0Zo/v00qB_L145CDv3WTsDB8kg/view?embed" 
-    allowfullscreen>
-  </iframe>
+    <iframe 
+      class="canva-embed-item"
+      loading="lazy" 
+      src="https://www.canva.com/design/DAHJHEUu0Zo/v00qB_L145CDv3WTsDB8kg/view?embed" 
+      allowfullscreen>
+    </iframe>
+  </div>
 </div>
